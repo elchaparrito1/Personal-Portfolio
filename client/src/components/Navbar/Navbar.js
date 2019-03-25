@@ -94,9 +94,6 @@ class Navbar extends React.Component {
                                       <Pages about>
                                             <Links link to="/about">About</Links>
                                         </Pages>
-                                      <Pages home>
-                                            <Links link home to="/">Home</Links>
-                                        </Pages>
                                     </List>
                             </tbody>
                         </table>

@@ -49,7 +49,7 @@ export const Pages = styled.th`
 `;
 
 export const SideLinks =  styled(Link)`
-    color: ${props => props.home ? "black" : "#66e5aa"};
+    color: #66e5aa;
     font-family: "Lato", Helvetica, sans-serif;
     display: inline-block;
     margin-top: ${props => props.contact ? "30px" : ""};

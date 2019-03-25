@@ -122,3 +122,50 @@ export const Icon = styled.img`
     }
    
 `;
+
+// //For the EmailModal code
+// export const Container = styled.div`
+//     border-radius: 5px;
+// `;
+
+// export const Input = styled.input`
+//     font-family: "Lato", Helvetica, sans-serif;
+//     width: 100%;
+//     padding: 12px;
+//     border: 1px solid #ccc;
+//     box-sizing: border-box;
+//     margin-top: 6px;
+//     margin-bottom: 16px;
+//     resize: vertical;
+    
+//     :focus {
+//         outline: none;
+//         -webkit-appearance: none;
+//         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+//     }
+
+// `;
+
+// export const TextAr = styled.textarea`
+//     font-family: "Lato", Helvetica, sans-serif;
+//     width: 80%;
+//     padding: 12px;
+//     border: 1px solid #ccc;
+//     box-sizing: border-box;
+//     margin-top: 6px;
+//     margin-bottom: 16px;
+//     resize: vertical;
+//     height: 200px; 
+
+//     :focus {
+//         background-color: pink;
+//         outline: none;
+//         -webkit-appearance: none;
+//         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+//     }
+// `;
+
+// export const Label = styled.label`
+//     font-family: "Lato", Helvetica, sans-serif;
+// `;
+
