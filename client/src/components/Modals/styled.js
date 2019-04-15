@@ -100,6 +100,16 @@ export const Button = styled.button`
         color: #66e5aa;
     }
 
+    :focus {
+        border: 0;
+        outline: none;
+    }
+
+    :active {
+        border: 0;
+        outline: none;
+    }
+
     @media only screen and (min-width: 320px) and (max-width: 1024px) {
         border: none;
         color: none;
@@ -147,4 +157,10 @@ export const TextArea = styled.textarea`
 
 export const Label = styled.label`
     font-family: "Lato", Helvetica, sans-serif;
+`;
+
+export const P = styled.p`
+    font-family: "Lato", Helvetica, sans-serif;
+    font-size: 20px;
+    color: ${props => props.error ? "red" : "black"}
 `;

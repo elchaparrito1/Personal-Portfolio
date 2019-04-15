@@ -64,6 +64,9 @@ export const Text = styled.h1`
     }
 `;
 
+//Note that inside of these media queries you had conditional stuff set up on the margin-left, but it was causing a warning in the console.
+//Styling has been removed and seems okay, but bear in mind you might need to add it back in.
+//You also had to do this in Navbar and Parallax components. A solution could be to extend styles to new style component.
 export const Links =  styled(Link)`
     color: #66e5aa
     font-family: "Lato", Helvetica, sans-serif;
@@ -77,19 +80,19 @@ export const Links =  styled(Link)`
     @media only screen and (max-width: 320px) {
         font-size: 1em;
         margin: 0 auto;
-        margin-left: ${props => props.link ? "0" : "5px"};
+        margin-left: 5px
     }
 
     @media only screen and (min-width: 321px) and (max-width: 767px) {
         font-size: 1.3em;
         margin: 0 auto;
-        margin-left: ${props => props.link ? "0" : "5px"};
+        margin-left: 5px
     }
 
     @media only screen and (min-width: 767px) and (max-width: 1024px) {
         font-size: 2em;
         margin: 0 auto;
-        margin-left: ${props => props.link ? "0" : "25px"};
+        margin-left: 25px;
     }
 
     
@@ -123,49 +126,27 @@ export const Icon = styled.img`
    
 `;
 
-// //For the EmailModal code
-// export const Container = styled.div`
-//     border-radius: 5px;
-// `;
+export const Table = styled.table`
+    margin: 0 auto; 
+    table-layout: fixed; 
+    width: ${props => props.linkers ? "30%" : "25%"};
 
-// export const Input = styled.input`
-//     font-family: "Lato", Helvetica, sans-serif;
-//     width: 100%;
-//     padding: 12px;
-//     border: 1px solid #ccc;
-//     box-sizing: border-box;
-//     margin-top: 6px;
-//     margin-bottom: 16px;
-//     resize: vertical;
-    
-//     :focus {
-//         outline: none;
-//         -webkit-appearance: none;
-//         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-//     }
+    @media only screen and (max-width: 320px) {
+        margin: 0 auto;
+        table-layout: auto;   
+        width: ${props => props.linkers ? "30%" : "25%"};
+    }
 
-// `;
+    @media only screen and (min-width: 321px) and (max-width: 767px) {
+        margin: 0 auto;
+        table-layout: auto;   
+        width: ${props => props.linkers ? "30%" : "25%"};
+    }
 
-// export const TextAr = styled.textarea`
-//     font-family: "Lato", Helvetica, sans-serif;
-//     width: 80%;
-//     padding: 12px;
-//     border: 1px solid #ccc;
-//     box-sizing: border-box;
-//     margin-top: 6px;
-//     margin-bottom: 16px;
-//     resize: vertical;
-//     height: 200px; 
-
-//     :focus {
-//         background-color: pink;
-//         outline: none;
-//         -webkit-appearance: none;
-//         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-//     }
-// `;
-
-// export const Label = styled.label`
-//     font-family: "Lato", Helvetica, sans-serif;
-// `;
+    @media only screen and (min-width: 767px) and (max-width: 1024px) {
+        margin: 0 auto;
+        table-layout: auto;   
+        width: ${props => props.linkers ? "30%" : "25%"};
+    }
+`;
 

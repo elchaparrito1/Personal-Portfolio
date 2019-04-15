@@ -18,7 +18,7 @@ function getWidthString(span) {
 
 export const Column = styled.div`
     float: left;
-    margin-bottom: ${props => props.name ? "100px" : "20px"};
+    margin-bottom: ${props => props.myname ? "100px" : "20px"};
     ${({ xs }) => (xs ? getWidthString(xs) : "width: 100%")};
 
     @media only screen and (min-width: 768px) {
@@ -64,7 +64,6 @@ export const ChildDiv = styled.div`
 `;
 
 export const Header = styled.h1`
-    animation: fadeInDown .7s 0.5s ease both;
     color: black;
     font-family: Lato:400,900, Helvetica, sans-serif;
     font-size: ${props => props.primary ? "3em" : "5.5em"};
@@ -82,7 +81,6 @@ export const Header = styled.h1`
 `;
 
 export const Text = styled.p`
-    animation: fadeInUp .7s .5s ease both;
     color: black;
     font-family: Roboto+Slab, Helvetica, sans-serif;
     font-size: 2.6em;
@@ -99,36 +97,37 @@ export const Text = styled.p`
 `;
 
 export const Line = styled.hr`
-    color: #66e5aa;
-    width: 50%;
+    border-bottom: 2px solid #66e5aa;
+    height: 0px;
+    width: 1px;
+  
+    -webkit-animation: increase 3s;
+    -moz-animation:    increase 3s; 
+    -o-animation:      increase 3s; 
+    animation:         increase 3s; 
+    animation-fill-mode: forwards;
+
+    @keyframes increase {
+        100% {
+            width: 40%;
+        }
+
+    }
 
     @media only screen and (min-width: 320px) and (max-width: 767px) {
-        width: 65%;
+        @keyframes increase {
+            100% {
+                width: 80%;
+            }
+        }
     }
 
     @media only screen and (min-width: 767px) and (max-width: 1024px) {
-        width: 75%;
+        @keyframes increase {
+            100% {
+                width: 70%;
+            }
+        }
     }
-
+    
 `;
-
-
-// @media only screen and (max-width: 320px) {
-//     font-size: ${props => props.primary ? "1.8em" : "2.8em"};
-// }
-
-// @media only screen and (min-width: 321px) and (max-width: 480px) {
-//     font-size: ${props => props.primary ? "2em" : "3em"};
-// }
-
-// @media only screen and (min-width: 768px) and (max-width: 1024px) {
-//     font-size: ${props => props.primary ? "3em" : "4em"};
-// }
-
-// @media only screen and (min-width: 1224px) {
-    
-// }
-
-// @media only screen and (min-width: 1824px) {
-    
-// }

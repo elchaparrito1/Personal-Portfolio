@@ -1,22 +1,34 @@
 import React from "react";
+import API from "../../utils/API";
 import { 
     Foot, 
     Text, 
     Row, 
     Column, 
     Links, 
-    Icon
+    Icon,
+    Table
 } from "./styled";
 import EmailModal from "../Modals/EmailModal";
 import imgLinked from "../../images/linkedin.png";
-import imgGmail from "../../images/gmail.png";
+import imgGmail from "../../images/contact.png";
 import imgFacebook from "../../images/facebook.png";
 import imgGithub from "../../images/github.png";
 
 class Footer extends React.Component {
 
     state = {
-        isOpen: false
+        isOpen: false,
+        email: "",
+        name: "",
+        message: "",
+        sent: ""
+    };
+
+    handleChange = (name) => (event) => {
+        this.setState({
+            [name]: event.target.value
+        });
     };
 
     handleModal = () => {
@@ -26,19 +38,64 @@ class Footer extends React.Component {
             });
        } else if (this.state.isOpen) {
            this.setState({
-               isOpen: false
-           })
+                isOpen: false,
+                email: "",
+                name: "",
+                message: "",
+                sent: ""
+           });
        }
     };
 
+    validateEmail = () => {
+        const { email } = this.state;
+        // eslint-disable-next-line
+        const regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        console.log(regex.test(email));
+        return regex.test(email);
+    };
+
+    sendEmail = (event) => {
+        event.preventDefault();
+        const emailObj = {
+            name: this.state.name,
+            email: this.state.email,
+            message: this.state.message
+        }
+        if (this.validateEmail(this.state.email) === false) {
+            this.setState({
+                sent: "invalid email"
+            });
+        } else {
+            API.sendMessage(emailObj)
+              .then(response => {
+                  console.log(response.data);
+                  if (response.data === "email sent") {
+                      this.setState({
+                          sent: "email sent"
+                      });
+                  } else if (response.data === "missing information") {
+                      this.setState({
+                          sent: "missing information"
+                      });
+                  }
+              })
+              .catch(error => {
+                  console.log(error.data);
+              });
+            //   this.handleModal()
+        };
+    };
 
     render() {
-        console.log(this.state.isOpen);
         return (
             <Foot>
                 <EmailModal 
                     handleModal={this.handleModal} 
                     isOpen={this.state.isOpen}
+                    handleChange={this.handleChange}
+                    sendEmail={this.sendEmail}
+                    sent={this.state.sent}
                 />
                     <Row connect>
                         <Column lg="12" md="12" sm="12" xs="12">
@@ -46,7 +103,7 @@ class Footer extends React.Component {
                         </Column>
                     </Row>
                     <Row>
-                        <table style={{margin: "0 auto", width: "25%"}}>
+                        <Table>
                             <tbody>
                                 <tr>
                                     <th><Icon onClick={this.handleModal} connect src={imgGmail} alt="icon separator"/></th>
@@ -55,19 +112,19 @@ class Footer extends React.Component {
                                     <th><a href="https://www.facebook.com/mitchell.t.waite"><Icon src={imgFacebook} alt="icon separator"/></a></th>
                                 </tr>
                             </tbody>
-                        </table>
+                        </Table>
                     </Row>
                     <Row>
-                        <table style={{margin: "0 auto", width: "35%"}}>
+                        <Table linkers>
                             <tbody>
                                 <tr>
-                                    <th><Links link to="/about">About</Links></th>
-                                    <th><Links to="/projects">Projects</Links></th>
                                     <th><Links to="/resume">Resume</Links></th>
+                                    <th><Links to="/about" >About</Links></th>
+                                    <th><Links to="/blog">Blog</Links></th>
                                     <th><Links to="/contact">Contact</Links></th>
                                 </tr>
                             </tbody>
-                        </table>
+                        </Table>
                     </Row>
                     <Row copyright>
                         <Column copyright lg="12" md="12" sm="12" xs="12">

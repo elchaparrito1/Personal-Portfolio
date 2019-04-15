@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 
 export const Row = styled.div`
@@ -36,7 +36,6 @@ export const Column = styled.div`
 `;
 
 export const Pages = styled.th`
-    animation: fadeInRight .7s 0.5s ease both;
     color: black;
     float: right;
     font-family: "Lato", Helvetica, sans-serif;
@@ -48,46 +47,53 @@ export const Pages = styled.th`
     
 `;
 
-export const SideLinks =  styled(Link)`
+export const SideLinks =  styled.button`
     color: #66e5aa;
     font-family: "Lato", Helvetica, sans-serif;
     display: inline-block;
-    margin-top: ${props => props.contact ? "30px" : ""};
+    margin-top: ${props => props.resume ? "30px" : ""};
+    background: none;
+    border: none;
+    outline: none;
 `;
 
 export const Links = styled(SideLinks)`
-::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background: ${props => props.home ? "black" : "#66e5aa"};
-    transition: width .3s;
-    margin-top: 4px;
-}
+    ::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #66e5aa;
+        transition: width .3s;
+        margin-top: 4px;
+        
+    }
 
-:hover {
-    color: ${props => props.home ? "black" : "#66e5aa"};
-    opacity: 1;
-}
+    :hover {
+        color: #66e5aa;
+        opacity: 1;
+        cursor: pointer;
+    }
 
-:hover::after {
-    width: 100%;
-}
+    :hover::after {
+        width: 100%;
+        outline: none;
+    }
 `;
 
 
 export const List = styled.tr`
-background-color: none;
-list-style-type: none;
+    background-color: none;
+    list-style-type: none;
+    
 
-&:hover ${Links} {
-    opacity: 0.5;
-}
+    &:hover ${Links} {
+        opacity: 0.5;
+    }
 
-&:hover ${Links}:hover {
-    opacity: 1;
-}
+    &:hover ${Links}:hover {
+        opacity: 1;
+    }
 `;
 
 //Hamburger icon navbar styling
@@ -108,5 +114,7 @@ export const Hamburger = styled.span`
     }
 
 `;
+
+
 
 

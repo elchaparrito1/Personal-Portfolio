@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Bounce from "react-reveal/Bounce";
 import { 
     Container,
     Column,
@@ -62,8 +63,12 @@ class Skills extends Component {
         return this.state.images.map((image, index) => {
             return (
                 <Column skill key={index} lg="3" md="3" sm="6" xs="6">
-                    <Icon skill src={image.img} alt="icon separator"/>
+                    <Bounce bottom>
+                        <Icon skill src={image.img} alt="icon separator"/>
+                    </Bounce>
+                    <Bounce bottom>
                         <Text skill>{image.name}</Text>
+                    </Bounce>
                 </Column>
             )
         });

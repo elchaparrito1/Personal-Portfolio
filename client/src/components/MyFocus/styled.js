@@ -57,34 +57,32 @@ export const Text = styled.h1`
     margin: 0 auto;
     text-align: center;
     width: 50%;
-    margin-top: 50px;
 
     @media only screen and (min-width: 320px) and (max-width: 767px) {
         font-size: ${props => props.header ? "2em" : "1.4em"};
+        width: 85%;
     }
 
     @media only screen and (min-width: 767px) and (max-width: 1024px) {
         font-size: ${props => props.header ? "2.5em" : "2em"};
+        width: 80%;
     }
     
 `;
 
 export const Icon = styled.img`
-    height: 50px;
+    height: ${props => props.giphy ? "300px" : "50px"};
     margin: 10px 0 10px 0;
-    width: 50px;
+    width: ${props => props.giphy ? "300px" : "50px"};
+    
 
     @media only screen and (min-width: 320px) and (max-width: 767px) {
-        width: 30px;
-        height: 30px;
+        width: ${props => props.giphy ? "200px" : "30px"};
+        height: ${props => props.giphy ? "200px" : "30px"};
     }
 
     @media only screen and (min-width: 767px) and (max-width: 1024px) {
-        width: 40px;
-        height: 40px;
+        width: ${props => props.giphy ? "200px" : "40px"};
+        height: ${props => props.giphy ? "200px" : "40px"};
     }
-`;
-
-export const Line = styled.hr`
-    width: 100%;
 `;

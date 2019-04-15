@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom"
+import ReactDOM from "react-dom";
 import {
     Row, 
     Column, 
@@ -12,39 +12,83 @@ import {
     Button,
     TextArea,
     Label,
-    Input
+    Input,
+    P
 } from "./styled";
 
 
 class EmailModal extends React.Component {
- 
 
     render() {
         const { isOpen } = this.props;
+        const { sent } = this.props;
 
         if(!isOpen) {
             return null;
         }
+
         return ReactDOM.createPortal (
         <Modal>
             <ModalContent>
                 <ModalHeader>
                     <Close onClick={this.props.handleModal} className="close">&times;</Close>
-                </ModalHeader>
-                <ModalBody>
-                    <form action="/action_page.php">
-                      <Label for="email">Email</Label>
-                      <Input type="text" placeholder="Your email.."/>
-                        <Label for="fname">Name</Label>
-                        <Input type="text" id="fname" name="firstname" placeholder="Your name.."/>
-                      <Label for="message">Message</Label>
-                      <TextArea name="Message" placeholder="Write something.."></TextArea>
-                    </form>
-                </ModalBody>
-                <ModalFooter>
+                        </ModalHeader>
+                            <ModalBody>
+                                <form>
+                                  <Label>Email</Label>
+                                  <Input
+                                    id="email" 
+                                    type="text" 
+                                    placeholder="Your email.."
+                                    value={this.props.email}
+                                    autoComplete="off"
+                                    onChange={this.props.handleChange("email")}
+                                    />
+                                  <Label>Name</Label>
+                                  <Input 
+                                    id="name"
+                                    type="text"
+                                    placeholder="Your name.."
+                                    value={this.props.name}
+                                    autoComplete="off"
+                                    onChange={this.props.handleChange("name")}
+                                    />
+                                  <Label>Message</Label>
+                                  <TextArea 
+                                    id="message"
+                                    name="Message" 
+                                    placeholder="Write something.."
+                                    value={this.props.message}
+                                    onChange={this.props.handleChange("message")}
+                                    />
+                                </form>
+                            </ModalBody>
+                        <ModalFooter>
+
+                    {sent === "email sent" && (
+                        <Row>
+                        <Column lg="12" md="12" sm="12" xs="12">
+                            <P>Message Sent!</P>
+                        </Column>
+                    </Row>)}
+
+                    {sent === "invalid email" && (
+                        <Row>
+                        <Column lg="12" md="12" sm="12" xs="12">
+                            <P error >Please enter a valid email address</P>
+                        </Column>
+                    </Row>)}
+
+                    {sent === "missing information" && (
                     <Row>
                         <Column lg="12" md="12" sm="12" xs="12">
-                            <Button>Send</Button>
+                            <P error >Please fill in all fields</P>
+                        </Column>
+                    </Row>)}
+
+                    <Row>
+                        <Column lg="12" md="12" sm="12" xs="12">
+                            <Button onClick={this.props.sendEmail}>Send</Button>
                         </Column>
                     </Row>
                 </ModalFooter>
