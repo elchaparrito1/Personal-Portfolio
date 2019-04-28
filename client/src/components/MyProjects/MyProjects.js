@@ -68,8 +68,8 @@ class MyProjects extends React.Component {
                               <Boxtext>Description</Boxtext>
                                 <P>{card.descrip}</P> 
                               <Boxtext>Links</Boxtext>
-                                <A href={card.linkOne}><strong>DEPLOYED APP</strong></A>
-                                <A href={card.linkTwo}><strong>SOURCE CODE</strong></A>
+                                <A href={card.linkOne} target="_blank"><strong>DEPLOYED APP</strong></A>
+                                <A href={card.linkTwo} target="_blank"><strong>SOURCE CODE</strong></A>
                             </div>
                         </div>
                     </div>

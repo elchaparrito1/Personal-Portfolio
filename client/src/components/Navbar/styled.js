@@ -8,6 +8,7 @@ export const Row = styled.div`
         clear: both;
         display: table;
     }
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
 `;
 
 function getWidthString(span) {
@@ -48,7 +49,7 @@ export const Pages = styled.th`
 `;
 
 export const SideLinks =  styled.button`
-    color: #66e5aa;
+    color: white;
     font-family: "Lato", Helvetica, sans-serif;
     display: inline-block;
     margin-top: ${props => props.resume ? "30px" : ""};
@@ -63,14 +64,14 @@ export const Links = styled(SideLinks)`
         display: block;
         width: 0;
         height: 2px;
-        background: #66e5aa;
+        background: white;
         transition: width .3s;
         margin-top: 4px;
         
     }
 
     :hover {
-        color: #66e5aa;
+        color: white;
         opacity: 1;
         cursor: pointer;
     }
@@ -99,7 +100,7 @@ export const List = styled.tr`
 //Hamburger icon navbar styling
 
 export const HamburgerPages = styled(Pages)`
-    margin: 10px 0 0 0;
+    margin: 5px 0 0 0;
 `;
 
 export const Hamburger = styled.span`

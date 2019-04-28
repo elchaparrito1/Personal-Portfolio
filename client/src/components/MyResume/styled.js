@@ -6,7 +6,13 @@ export const Row = styled.div`
         clear: both;
         display: table;
     }
-    
+    margin-bottom: ${props => props.break ? "100px" : ""}
+
+    @media only screen and (min-width: 320px) and (max-width: 767px) {
+        margin-top: 0px;
+        margin-bottom: ${props => props.break ? "30px" : ""};
+    }
+
 `;
 
 function getWidthString(span) {
@@ -20,6 +26,7 @@ export const Column = styled.div`
     float: left;
     margin: 0 auto;
     ${({ xs }) => (xs ? getWidthString(xs) : "width: 100%")};
+    
 
     @media only screen and (min-width: 768px) {
         ${({ sm }) => sm && getWidthString(sm)};
@@ -42,43 +49,196 @@ export const Container = styled.div`
     width: 92%;
     opacity: 2;
     padding: 10vh 0 15vh 0;
+
+    @media only screen and (max-width: 320px) {
+        padding: 5vh 0 5vh 0;
+        width: 100%;
+    }
+
+    @media only screen and (min-width: 321px) and (max-width: 767px) {
+        padding: 5vh 0 5vh 0;
+        width: 100%;
+    }
+
+    @media only screen and (min-width: 767px) and (max-width: 1024px) {
+        padding: 0 0 5vh 0;
+        width: 100%;
+    }
 `;
 
 export const MyContainer = styled.div`
-    border: solid 2px black;
     height: 480px;
-    top: 70px;
     left: 50px;
-    bottom: 400px;
     position: fixed;
+    top: 70px;
     width: 400px;
 
-    -moz-box-shadow: 0 0 15px #ccc;
-    -webkit-box-shadow: 0 0 15px #ccc;
-    box-shadow: 0 0 15px #ccc;
-`;
-
-export const Table = styled.table`
-    margin: 0 auto; 
-    table-layout: fixed; 
-    width: ${props => props.linkers ? "30%" : "25%"};
+    -moz-box-shadow: 0 0 25px #ccc;
+    -webkit-box-shadow: 0 0 25px #ccc;
+    box-shadow: 0 0 25px #ccc;
+    transition: color 0.25s;
 
     @media only screen and (max-width: 320px) {
+        height: 0;
+        left: 0;
+        margin: 0 auto;
+        position: relative;
+        top: 0;
+        width: 90%
+
+        -moz-box-shadow: 0 0 0px #ccc;
+        -webkit-box-shadow: 0 0 0px #ccc;
+        box-shadow: 0 0 0px #ccc;
+        transition: color 0.25s;
+    }
+
+    @media only screen and (min-width: 321px) and (max-width: 767px) {
+        height: 0;
+        left: 0;
+        margin: 0 auto;
+        position: relative;
+        top: 0;
+        width: 90%
+
+        -moz-box-shadow: 0 0 0px #ccc;
+        -webkit-box-shadow: 0 0 0px #ccc;
+        box-shadow: 0 0 0px #ccc;
+        transition: color 0.25s;
+    }
+
+    @media only screen and (min-width: 767px) and (max-width: 1023px) {
+        height: 0;
+        bottom: 500px;
+        left: 0;
+        margin: 0 auto;
+        position: relative;
+        top: 0;
+        width: 90%
+
+        -moz-box-shadow: 0 0 0px #ccc;
+        -webkit-box-shadow: 0 0 0px #ccc;
+        box-shadow: 0 0 0px #ccc;
+        transition: color 0.25s;
+    }
+
+    @media only screen and (min-width: 1024px) and (max-width: 1300px) {
+        left: 0px;
+        -moz-box-shadow: 0 0 0px #ccc;
+        -webkit-box-shadow: 0 0 0px #ccc;
+        box-shadow: 0 0 0px #ccc;
+        transition: color 0.25s;
+    }
+`;
+
+export const Photo = styled.img`
+    width: 180px;
+    height: 200px;
+    border-radius: 50%;
+
+    @media only screen and (max-width: 320px) {
+        width: 135px;
+        height: 155px;
+    }
+
+    @media only screen and (min-width: 321px) and (max-width: 767px) {
+        width: 135px;
+        height: 155px;
+    }
+`;
+
+export const Icon = styled.img`
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+
+    :hover {
+        cursor: pointer;
+    }
+
+    @media only screen and (max-width: 320px) {
+        height: 25px;
+        width: 25px;
         
     }
 
     @media only screen and (min-width: 321px) and (max-width: 767px) {
-       
+        height: 25px;
+        width: 25px;
+        
     }
 
     @media only screen and (min-width: 767px) and (max-width: 1024px) {
-        
+        height: 30px;
+        width: 30px;
+    }
+   
+`;
+
+export const A = styled.a`
+    color: #0000FF;
+    font-family: "Lato", Helvetica, sans-serif;
+    font-size: 1.5em;
+
+    :hover {
+        cursor: pointer;
+        opacity: 0.5;
+    }
+
+    @media only screen and (max-width: 320px) {
+        font-size: 1.1em;
+    }
+
+    @media only screen and (min-width: 321px) and (max-width: 767px) {
+        font-size: 1.2em;
+    }
+
+    @media only screen and (min-width: 767px) and (max-width: 1024px) {
+        font-size: 1.4em;
+    }
+`;
+
+export const Li = styled.li`
+    color: gray;
+    font-family: "Lato", Helvetica, sans-serif;
+    font-size: 1.3em;
+    list-style: none;
+    margin: 10px;
+    text-align: left;
+
+    @media only screen and (max-width: 320px) {
+        font-size: 1em;
+        margin: 0 auto;
+        width: 90%;
+        text-align: center;
+    }
+
+    @media only screen and (min-width: 321px) and (max-width: 767px) {
+        font-size: 1em;
+        margin: 0 auto;
+        width: 70%;
+        text-align: center;
+    }
+
+    @media only screen and (min-width: 767px) and (max-width: 1024px) {
+        font-size: 1.2em;
+        margin: 0 auto;
+        margin-bottom: 5px;
+        width: 70%;
+        text-align: center;
     }
 `;
 
 export const Th = styled.th`
     font-family: "Lato", Helvetica, sans-serif;
     margin: 2px;
+
+    @media only screen and (min-width: 767px) and (max-width: 1023px) {
+        font-size: 1.3em;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        font-size: 1.2em;
+    }
 `;
 
 export const Text = styled.h1`
@@ -89,21 +249,42 @@ export const Text = styled.h1`
     text-align: center;
     width: 50%;
     margin-top: ${props => props.header ? "50px" : "60px"};
-
-    @media only screen and (min-width: 320px) and (max-width: 767px) {
-        font-size: ${props => props.header ? "2em" : "1.4em"};
-    }
-
-    @media only screen and (min-width: 767px) and (max-width: 1024px) {
-        font-size: ${props => props.header ? "2.5em" : "1.4em"};
-        
-    }
 `;
 
-export const BoxText = styled(Text)`
-    font-family: "Lato", Helvetica, sans-serif;
-    text-decoration: underline;
-    font-size: 1.5em;
+// export const BoxText = styled(Text)`
+//     font-family: "Lato", Helvetica, sans-serif;
+//     font-size: 2em;
+
+//     @media only screen and (min-width: 320px) and (max-width: 767px) {
+//         font-size: 1.5em;
+//     }
+
+//     @media only screen and (min-width: 767px) and (max-width: 1024px) {
+//         font-size: 1.7em;
+//     }
+
+//     @media only screen and (min-width: 1024px) and (max-width: 1400px) {
+//         font-size: 6em;
+//     }
+// `;
+
+export const TextHeader = styled(Text)`
+    font-size: 2em;
+
+    @media only screen and (min-width: 320px) and (max-width: 767px) {
+        font-size: 1.5em;
+        margin-top: 0px;
+    }
+
+    @media only screen and (min-width: 767px) and (max-width: 1023px) {
+        font-size: 1.7;
+        margin-top: 30px;
+    }
+
+    @media only screen and (min-width: 1024px) and (max-width: 1400px) {
+        font-size: 1.8em;
+        margin-top: 30px;
+    }
 `;
 
 export const P = styled.p`
@@ -116,64 +297,27 @@ export const P = styled.p`
     
 
     @media only screen and (min-width: 320px) and (max-width: 767px) {
-        font-size: ;
+        font-size: ${props => props.heading ? "1.1em" : "1em"};
+        width: 90%;
+        text-align: "left";
+        margin: 0 auto;
+        
     }
 
-    @media only screen and (min-width: 767px) and (max-width: 1024px) {
-        font-size: ;
+    @media only screen and (min-width: 767px) and (max-width: 1023px) {
+        font-size: ${props => props.heading ? "1.3em" : "1.2em"};
+        width: 90%;
+        text-align: "left";
+        margin: 0 auto;
+    }
 
+    @media only screen and (min-width: 1024px) and (max-width: 1400px) {
+        font-size: ${props => props.heading ? "1.5em" : "1.3em"};
+        width: 90%;
+        text-align: "left";
+        margin: 0 auto;
     }
 `;
 
-export const BoxP = styled(P)`
-    font-size: 1.2em;
-    width: 80%
-    margin: 0 auto;
-`;
 
-export const TextHeader = styled(Text)`
-    font-size: 2em;
-`;
 
-export const Li = styled.li`
-    color: gray;
-    font-family: "Lato", Helvetica, sans-serif;
-    font-size: 1.3em;
-    list-style: none;
-    margin: 10px;
-    text-align: left;
-`;
-
-export const Photo = styled.img`
-    width: 180px;
-    height: 200px;
-    border-radius: 50%;
-`;
-
-export const Icon = styled.img`
-    height: 20px;
-    width: 20px;
-
-    :hover {
-        cursor: pointer;
-    }
-
-    @media only screen and (max-width: 320px) {
-        height: 25px;
-        width: 25px;
-        margin-left: ${props => props.connect ? "0" : "20px"};
-    }
-
-    @media only screen and (min-width: 321px) and (max-width: 767px) {
-        height: 25px;
-        width: 25px;
-        margin-left: ${props => props.connect ? "0" : "30px"};
-    }
-
-    @media only screen and (min-width: 767px) and (max-width: 1024px) {
-        height: 35px;
-        width: 35px;
-        margin-left: ${props => props.connect ? "0" : "35px"};
-    }
-   
-`;

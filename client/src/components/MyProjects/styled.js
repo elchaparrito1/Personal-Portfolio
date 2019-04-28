@@ -36,7 +36,7 @@ export const Column = styled.div`
 `;
 
 export const Container = styled.div`
-    background-color: #686868;
+    background-color: #bfbfbf;
     display: table;
     margin: 10vh 0 10vh 0;
     text-align: center;
@@ -82,14 +82,14 @@ export const P = styled.p`
 `;
 
 export const A = styled.a`
-    color: #66e5aa; 
+    color: #003366; 
     display: inline-block;
     margin: 0 5px 5px 5px;
     padding: 5px;
     
     :hover {
         cursor: pointer;
-        color: #66e5aa;
+        color: #003366;
         opacity: 0.5;
     }
 

@@ -7,7 +7,7 @@ export const Row = styled.div`
         clear: both;
         display: table;
     }
-    background-color: ${props => props.copyright ? "rgba(#686868, 0.5)" : "#686868"}
+    background-color: ${props => props.copyright ? "rgba(#bfbfbf, 0.5)" : "#bfbfbf"}
     margin: 0 0 15px 0;
     
 `;
@@ -38,10 +38,10 @@ export const Column = styled.div`
 `;
 
 export const Foot = styled.div`
-    background-color: #686868;
+    background-color: #bfbfbf;
     border-top: 1px solid #E7E7E7;
     text-align: center;
-    padding: 50px;
+    padding: 30px;
     position: relative;
     left: 0;
     bottom: 0;
@@ -68,12 +68,12 @@ export const Text = styled.h1`
 //Styling has been removed and seems okay, but bear in mind you might need to add it back in.
 //You also had to do this in Navbar and Parallax components. A solution could be to extend styles to new style component.
 export const Links =  styled(Link)`
-    color: #66e5aa
+    color: #003366
     font-family: "Lato", Helvetica, sans-serif;
     font-size: 1.4em;
 
     :hover {
-        color: #66e5aa;
+        color: #003366;
         opacity: 0.5;
     }
 

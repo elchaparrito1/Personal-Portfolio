@@ -84,7 +84,7 @@ export const Close = styled.span`
     cursor: pointer;
 
     :hover, focus {
-        color: #66e5aa;
+        color: #003366;
     }
 `;
 
@@ -97,7 +97,7 @@ export const Button = styled.button`
     font-family: "Lato", Helvetica, sans-serif;
 
     :hover {
-        color: #66e5aa;
+        color: #003366;
     }
 
     :focus {
@@ -132,7 +132,7 @@ export const Input = styled.input`
     resize: vertical;
     
     :focus {
-        border-color: #66e5aa;
+        border-color: #003366;
         outline: 0 none;
     }
 
@@ -150,7 +150,7 @@ export const TextArea = styled.textarea`
     height: 200px; 
 
     :focus {
-        border-color: #66e5aa;
+        border-color: #003366;
         outline: 0 none;
     }
 `;

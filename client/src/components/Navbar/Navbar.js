@@ -38,7 +38,6 @@ class Navbar extends React.Component {
 
     nav = (event) => {
         event.preventDefault();
-        console.log("Function ran");
         if(this.state.nav) {
             this.setState({
                 nav: false
@@ -48,6 +47,30 @@ class Navbar extends React.Component {
                 nav: true
             });
           }
+    }
+
+    hamburgerChoice = () => {
+        const locale = window.location.href;
+        if (locale.split("/").pop() === "") {
+            return (
+                <div>
+                <Link to="/resume"><SideLinks ham-link >Resume</SideLinks></Link>
+                <Link to="/about"><SideLinks ham-link >About</SideLinks></Link>
+                <Link to="/blog"><SideLinks ham-link>Blog</SideLinks></Link>
+                <Link to="/contact"><SideLinks contact ham-link>Contact</SideLinks></Link>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                <Link to="/"><SideLinks ham-link >Home</SideLinks></Link>
+                <Link to="/resume"><SideLinks ham-link >Resume</SideLinks></Link>
+                <Link to="/about"><SideLinks ham-link >About</SideLinks></Link>
+                <Link to="/blog"><SideLinks ham-link>Blog</SideLinks></Link>
+                <Link to="/contact"><SideLinks contact ham-link>Contact</SideLinks></Link>
+                </div>
+            )
+        }
     }
 
     menuChoice = () => {
@@ -96,17 +119,14 @@ class Navbar extends React.Component {
   render() {
       const isDesktop = this.state.isDesktop;
       const hamStyle = this.state.nav ? {width: "250px"} : {width: "0"};
-      const navStyle = window.location.href.split("/").pop() === "" ? {} : {backgroundColor: "black", marginBottom: "25px"};
+      const navStyle = window.location.href.split("/").pop() === "" ? {} : {backgroundColor: "black"};
       return (
             <div>
                 {!isDesktop ? (
                     <div>
                         <div id="mySidenav" style={hamStyle} className="sidenav">
                             <span className="closebtn" onClick={this.nav}>&times;</span>
-                                <Link to="/resume"><SideLinks ham-link >Resume</SideLinks></Link>
-                                <Link to="/about"><SideLinks ham-link >About</SideLinks></Link>
-                                <Link to="/blog"><SideLinks ham-link>Blog</SideLinks></Link>
-                                <Link to="/contact"><SideLinks contact ham-link>Contact</SideLinks></Link>
+                                {this.hamburgerChoice()}
                             </div>
                         <Row>
                             <Column lg="12" md="12" sm="12" xs="12">

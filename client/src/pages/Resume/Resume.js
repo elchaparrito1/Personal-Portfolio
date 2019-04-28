@@ -8,11 +8,15 @@ import MyResume from "../../components/MyResume/MyResume";
 class Resume extends React.Component {
 
 
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+    
     render() {
     return (
         <PhantomWrapper>
             <Navbar/>
-                <MyResume className="white mt5 tc f3" id={"multiPage"}/>
+                <MyResume/>
             <Footer/>
         </PhantomWrapper>
      )

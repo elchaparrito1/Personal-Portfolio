@@ -7,7 +7,16 @@ const mongoose = require('mongoose');
 const messageRoute = express.Router();
 const PORT = 3001;
 let nodemailer = require("nodemailer");
-require("dotenv").config();
+
+//Added from Pusher
+require('dotenv').config({ path: '.env' });
+const Chatkit = require('@pusher/chatkit-server');
+
+const chatkit = new Chatkit.default({
+    instanceLocator: process.env.CHATKIT_INSTANCE_LOCATOR,
+    key: process.env.CHATKIT_SECRET_KEY,
+  });
+///////////////////  
 
 
 // // Make public a static folder
@@ -33,9 +42,9 @@ messageRoute.route("/sendMessage/contact").post(function(req, res) {
             res.json("missing information");
     } else {
 
-        console.log(process.env.EMAIL_ADDRESS);
-        let ADDRESS = "elchaparrito1@gmail.com";
-        let PASSWORD = "Javascript2019";
+        console.log("Info", process.env.EMAIL_ADDRESS, process.env.EMAIL_PASSWORD);
+        let ADDRESS = process.env.EMAIL_ADDRESS
+        let PASSWORD = process.env.EMAIL_PASSWORD
         
         console.log("email address", ADDRESS, PASSWORD);
         
@@ -44,7 +53,7 @@ messageRoute.route("/sendMessage/contact").post(function(req, res) {
             auth: {
                 user: ADDRESS,
                 pass: PASSWORD
-            },
+            }
         });
         
         const mailOptions = {
@@ -65,6 +74,38 @@ messageRoute.route("/sendMessage/contact").post(function(req, res) {
         });
     }
 });
+
+//Added from Pusher
+app.post('/users', (req, res) => {
+    console.log("did this run?");
+    const { userId } = req.body;
+
+    chatkit
+    .createUser({
+      id: userId,
+      name: userId,
+    })
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch(err => {
+      if (err.error === 'services/chatkit/user_already_exists') {
+        console.log(`User already exists: ${userId}`);
+        res.sendStatus(200);
+      } else {
+        res.status(err.status).json(err);
+      }
+    });
+});
+
+app.post('/authenticate', (req, res) => {
+  const authData = chatkit.authenticate({
+    userId: req.query.user_id,
+  });
+  res.status(authData.status).send(authData.body);
+});
+
+//////////////////////////////
 
 //using router routes
 app.use("/api", messageRoute);

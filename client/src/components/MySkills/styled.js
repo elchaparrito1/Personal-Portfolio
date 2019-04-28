@@ -50,7 +50,7 @@ export const ChildDiv = styled.div`
 `;
 
 export const Text = styled.h1`
-    color: ${props => props.skill ? "#66e5aa" : "black"};
+    color: ${props => props.skill ? "#003366" : "black"};
     font-family: "Lato", Helvetica, sans-serif;
     font-size: ${props => props.header ? "3em" : "2em"};
     margin: 0 auto;
