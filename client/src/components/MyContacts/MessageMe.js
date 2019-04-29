@@ -1,11 +1,9 @@
 import React from "react";
-// import history from "../../history";
-// import React, { Component } from "react";
 import axios from "axios";
 import Chatkit from "@pusher/chatkit-client";
 import Spinner from "react-spinkit";
-import Dialog from "../../components/Dialog/Dialog";
 import ChatWidget from "../../components/ChatWidget/ChatWidget";
+import DialogModal from "../Modals/DialogModal";
 import {
     Row,
     Column,
@@ -27,7 +25,6 @@ class MessageMe extends React.Component {
       };
   
       handleBox = () => {
-        console.log("This is working");
         this.setState({
             currentUser: null,
             currentRoom: null,
@@ -198,10 +195,11 @@ class MessageMe extends React.Component {
               {isLoading ? <Spinner name="three-bounce" color="#300d4f" /> : null}
   
               {isDialogOpen ? (
-                <Dialog
+                <DialogModal
                   username={userId}
                   handleInput={this.handleInput}
                   launchChat={this.launchChat}
+                  handleBox={this.handleBox}
                 />
               ) : null}
             </div>

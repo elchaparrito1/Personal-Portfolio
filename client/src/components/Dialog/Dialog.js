@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './Dialog.css';
+import React from "react";
+import PropTypes from "prop-types";
+import "./Dialog.css";
 
     const Dialog = props => {
       const { username, handleInput, launchChat, handleBox } = props;

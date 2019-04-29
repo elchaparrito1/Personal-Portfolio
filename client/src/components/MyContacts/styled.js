@@ -38,7 +38,7 @@ export const Box = styled.div`
     font-family: "Lato", Helvetica, sans-serif;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 10px;
-    height: 350px;
+    height: 360px;
     margin: 5vh 0 5vh 0;
     text-align: center;
     background-color: #bfbfbf;
@@ -53,7 +53,7 @@ export const Box = styled.div`
     @media only screen and (min-width: 320px) and (max-width: 767px) {
         font-size: 1.2em;
         width: 100%
-        
+        height: 350px;
     }
 
     @media only screen and (min-width: 767px) and (max-width: 1024px) {
@@ -127,7 +127,7 @@ export const TimerText = styled(Text)`
     vertical-align: center;
     
     @media only screen and (min-width: 320px) and (max-width: 767px) {
-        font-size: 1.2em;
+        font-size: 1em;
         width: 100%;
     }
 

@@ -23,12 +23,13 @@ input[type="text"]:focus {
     right: 40px;
     width: 400px;
     border: 1px solid #ccc;
+    z-index: 2;
   }
 
   .chat-header {
     width: 100%;
     height: 60px;
-    background-color: #00de72;
+    background-color: black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,6 +38,7 @@ input[type="text"]:focus {
   .chat-header h2 {
     font-size: 18px;
     margin-bottom: 0;
+    color: white;
   }
 
   .chat-body {
@@ -62,7 +64,8 @@ input[type="text"]:focus {
 
   .message.user {
     float: right;
-    background-color: peachpuff;
+    background-color: #003366;
+    color: white;
   }
 
   .message.support {
@@ -70,7 +73,7 @@ input[type="text"]:focus {
     background-color: #ddd;
   }
 
-  .message-form, .message-input {
+  .message-form {
     width: 100%;
     margin-bottom: 0;
   }
@@ -82,17 +85,27 @@ input[type="text"]:focus {
     height: 50px;
     padding: 20px;
     font-size: 16px;
-    background-color: #f6f6f6
+    background-color: #f6f6f6;
+    width: 80%;
+    float: left;
+  }
+
+  .message-input:focus {
+    outline: #003366;
+  }
+
+  .message-input:active {
+    outline: #003366;
   }
 
   .close {
-    color: #ccc;
+    color: white;
     float: right;
-    font-size: 30px;
-    color: black;
-    cursor: pointer;
+    font-size: 35px;
+
   }
 
-  .close:hover, focus {
+  .close:hover {
     color: #003366; 
+    cursor: pointer;
   }   

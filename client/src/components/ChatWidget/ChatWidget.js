@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./ChatWidget.css";
+import sendImg from "../../images/share.png";
 
     const ChatWidget = props => {
       const { newMessage, sendMessage, handleInput, currentUser, messages, handleBox } = props;
@@ -14,7 +15,7 @@ import "./ChatWidget.css";
         <section className="chat">
           <div className="chat-widget">
             <header className="chat-header">
-              <h2>Got Questions? Chat with us</h2>
+              <h2>Let's Chat</h2>
               <span onClick={handleBox} className="close">&times;</span>
             </header>
             <section className="chat-body">{ChatSession}</section>
@@ -24,10 +25,11 @@ import "./ChatWidget.css";
                 className="message-input"
                 autoFocus
                 name="newMessage"
-                placeholder="Compose your message and hit ENTER to send"
+                placeholder="Your Message"
                 onChange={handleInput}
                 value={newMessage}
               />
+              <img src={sendImg} alt="icon separator" style={{height: "25px", width: "100%", backgroundColor: "#f6f6f6"}}/>
             </form>
           </div>
         </section>

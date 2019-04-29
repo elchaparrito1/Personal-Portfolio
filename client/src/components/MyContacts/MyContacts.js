@@ -63,9 +63,16 @@ class MyContacts extends React.Component {
     checkTime = () => {
         let time = new Date();
         let hours = time.getHours();
-        if (this.state.day === 1 || hours < 8 || hours > 20) {
+        if (this.state.day === 0 || hours < 8 || hours > 20) {
             return (
                 <div>
+                    <Row>
+                        <Column lg="12" md="12" sm="12" xs="12">
+                            <TimerText style={{color: "red"}}>
+                                I'm not available
+                            </TimerText>
+                        </Column>
+                    </Row>
                     <Row>
                         <Column lg="12" md="12" sm="12" xs="12">
                             <TimerText style={{color: "red"}}>
