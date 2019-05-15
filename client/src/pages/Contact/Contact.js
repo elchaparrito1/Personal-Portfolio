@@ -7,6 +7,9 @@ import ParallaxComponent from "../../components/ParallaxComponent/ParallaxCompon
 
 
 class Contact extends React.Component {
+    state = {
+        isChatOpen: false
+    }
 
     componentDidMount() {
         window.scrollTo(0, 0);
@@ -14,6 +17,13 @@ class Contact extends React.Component {
 
     componentWillUnmount() {
         window.scrollTo(0, 0);
+    }
+
+    myCallback = (dataFromChild) => {
+        this.setState({
+            isChatOpen: dataFromChild
+        });
+        console.log(this.state.isChatOpen)
     }
 
     render() {
@@ -25,8 +35,8 @@ class Contact extends React.Component {
                     main="Drop me a line"
                     subHeading="See contact options below" 
                     />
-                    <MyContacts/>
-                <Footer/>
+                    <MyContacts callbackFromParent={this.myCallback}/>
+                <Footer isChatOpen={this.state.isChatOpen}/>
             </PhantomWrapper>
          )
         }

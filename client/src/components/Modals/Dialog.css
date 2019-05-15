@@ -7,7 +7,6 @@
     bottom: 0;
     left: 0;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content:center;
     align-items: center;
@@ -66,4 +65,5 @@
   .close {
     cursor: pointer;
     color: #003366;
+    font-size: 1.8em;
   }

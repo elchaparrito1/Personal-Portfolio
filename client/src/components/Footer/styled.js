@@ -56,7 +56,7 @@ export const Text = styled.h1`
     font-size: ${props => props.copyright ? "1em" : "2em"}
 
     @media only screen and (min-width: 320px) and (max-width: 1024px) {
-        font-size: ${props => props.copyright ? "1em" : "2em"};
+        font-size: ${props => props.copyright ? "1em" : "1.8em"};
     }
 
     @media only screen and (min-width: 767px) and (max-width: 1024px) {
@@ -78,7 +78,7 @@ export const Links =  styled(Link)`
     }
 
     @media only screen and (max-width: 320px) {
-        font-size: 1em;
+        font-size: 1.2em;
         margin: 0 auto;
         margin-left: 5px
     }

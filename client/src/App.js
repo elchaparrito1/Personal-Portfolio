@@ -2,7 +2,6 @@ import React from "react"
 import { Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Blog from "./pages/Blog";
 import Resume from "./pages/Resume";
 import Contact from "./pages/Contact";
 import Support from './pages/Support';
@@ -17,7 +16,6 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route exact path="/about" component={About}/>
-            <Route exact path="/blog" component={Blog}/>
             <Route exact path="/resume" component={Resume}/>
             <Route exact path="/contact" component={Contact}/>
             <Route exact path="/support" component={Support}/>

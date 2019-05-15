@@ -15,6 +15,7 @@ import imgGmail from "../../images/contact.png";
 import imgFacebook from "../../images/facebook.png";
 import imgGithub from "../../images/github.png";
 
+
 class Footer extends React.Component {
 
     state = {
@@ -24,6 +25,14 @@ class Footer extends React.Component {
         message: "",
         sent: ""
     };
+
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
+    componentWillUnmount() {
+        window.scrollTo(0, 0);
+    }
 
     handleChange = (name) => (event) => {
         this.setState({
@@ -83,13 +92,13 @@ class Footer extends React.Component {
               .catch(error => {
                   console.log(error.data);
               });
-            //   this.handleModal()
         };
     };
 
     render() {
+        const zStyle = this.props.isChatOpen ? {zIndex: "-1"} : {};
         return (
-            <Foot>
+            <Foot style={zStyle}>
                 <EmailModal 
                     handleModal={this.handleModal} 
                     isOpen={this.state.isOpen}
@@ -107,9 +116,9 @@ class Footer extends React.Component {
                             <tbody>
                                 <tr>
                                     <th><Icon onClick={this.handleModal} connect src={imgGmail} alt="icon separator"/></th>
-                                    <th><a href="https://www.linkedin.com/in/mitchell-waite-18b445a3/"><Icon src={imgLinked} alt="icon separator"/></a></th>
-                                    <th><a href="https://github.com/elchaparrito1"><Icon src={imgGithub} alt="icon separator"/></a></th>
-                                    <th><a href="https://www.facebook.com/mitchell.t.waite"><Icon src={imgFacebook} alt="icon separator"/></a></th>
+                                    <th><a href="https://www.linkedin.com/in/mitchell-waite-18b445a3/" rel="noopener noreferrer" target="_blank"><Icon src={imgLinked} alt="icon separator"/></a></th>
+                                    <th><a href="https://github.com/elchaparrito1" rel="noopener noreferrer" target="_blank"><Icon src={imgGithub} alt="icon separator"/></a></th>
+                                    <th><a href="https://www.facebook.com/mitchell.t.waite" rel="noopener noreferrer" target="_blank"><Icon src={imgFacebook} alt="icon separator"/></a></th>
                                 </tr>
                             </tbody>
                         </Table>
@@ -118,9 +127,9 @@ class Footer extends React.Component {
                         <Table linkers>
                             <tbody>
                                 <tr>
+                                    <th><Links to="/">Home</Links></th>
                                     <th><Links to="/resume">Resume</Links></th>
                                     <th><Links to="/about" >About</Links></th>
-                                    <th><Links to="/blog">Blog</Links></th>
                                     <th><Links to="/contact">Contact</Links></th>
                                 </tr>
                             </tbody>

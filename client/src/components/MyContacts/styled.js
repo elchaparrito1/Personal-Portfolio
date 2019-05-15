@@ -37,12 +37,11 @@ export const Column = styled.div`
 export const Box = styled.div`
     font-family: "Lato", Helvetica, sans-serif;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 10px;
+    padding: 5px;
     height: 360px;
-    margin: 5vh 0 5vh 0;
     text-align: center;
     background-color: #bfbfbf;
-    width: 90%;
+    width: 100%;
 
     :hover {
         cursor: pointer;
@@ -52,21 +51,27 @@ export const Box = styled.div`
 
     @media only screen and (min-width: 320px) and (max-width: 767px) {
         font-size: 1.2em;
-        width: 100%
+        
         height: 350px;
     }
 
     @media only screen and (min-width: 767px) and (max-width: 1024px) {
-        font-size: 1.4em;
-        width: 60%;
+        font-size: 1.5em;
+        width: 80%;
+        margin: 5vh auto 0 auto;
+    }
+
+    @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+        font-size: 1em;
+        width: 80%;
         margin: 5vh auto 0 auto;
     }
 `;
 
 export const Timer = styled(Box)`
-    font-size: 2em;
+    font-size: 1.6em;
     height: 200px;
-    width: 60%;
+    width: 50%;
     margin: 0 auto;
     text-align: center;
     vertical-align: center;
@@ -86,7 +91,12 @@ export const Timer = styled(Box)`
     @media only screen and (min-width: 767px) and (max-width: 1024px) {
         font-size: 1.5em;
         width: 100%;
-        height: 100px;
+        height: 120px;
+    }
+
+    @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+        height: 160px;
+        width: 80%;
     }
 `;
 
@@ -110,6 +120,7 @@ export const Text = styled.p`
     font-size: 1.5em;
     text-align: center;
     vertical-align: center;
+    font-family: "Lato", Helvetica, sans-serif;
 
     @media only screen and (min-width: 320px) and (max-width: 767px) {
         font-size: 1.2em;
@@ -122,7 +133,6 @@ export const Text = styled.p`
 `;
 
 export const TimerText = styled(Text)`
-    font-size: 1.6em;
     margin: 0 auto;
     vertical-align: center;
     
@@ -140,9 +150,29 @@ export const TimerText = styled(Text)`
         font-size: 1.5em;
         width: 100%;
     }
+
+    @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+        font-size: 1.8em;
+        width: 100%;
+    }
 `;
 
 export const A = styled.a`
     color: #003366;
     text-decoration: none;
+`;
+
+export const Loader = styled.div`
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid black;
+    border-radius: 100%;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    animation: spin 2s linear infinite;
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
 `;

@@ -54,9 +54,9 @@ class Navbar extends React.Component {
         if (locale.split("/").pop() === "") {
             return (
                 <div>
+                <Link to="/"><SideLinks ham-link>Home</SideLinks></Link>
                 <Link to="/resume"><SideLinks ham-link >Resume</SideLinks></Link>
                 <Link to="/about"><SideLinks ham-link >About</SideLinks></Link>
-                <Link to="/blog"><SideLinks ham-link>Blog</SideLinks></Link>
                 <Link to="/contact"><SideLinks contact ham-link>Contact</SideLinks></Link>
                 </div>
             )
@@ -66,7 +66,6 @@ class Navbar extends React.Component {
                 <Link to="/"><SideLinks ham-link >Home</SideLinks></Link>
                 <Link to="/resume"><SideLinks ham-link >Resume</SideLinks></Link>
                 <Link to="/about"><SideLinks ham-link >About</SideLinks></Link>
-                <Link to="/blog"><SideLinks ham-link>Blog</SideLinks></Link>
                 <Link to="/contact"><SideLinks contact ham-link>Contact</SideLinks></Link>
                 </div>
             )
@@ -82,9 +81,6 @@ class Navbar extends React.Component {
                     <Fade right><Link to="/contact"><Links link>Contact</Links></Link></Fade>
                 </Pages>
                 <Pages>
-                    <Fade right><Link to="/blog"><Links link>Blog</Links></Link></Fade>
-                </Pages>
-                <Pages>
                     <Fade right><Link to="/about"><Links link>About</Links></Link></Fade>
                 </Pages>
                 <Pages>
@@ -97,9 +93,6 @@ class Navbar extends React.Component {
                 <List>
                 <Pages contact>
                     <Fade right><Link to="/contact"><Links link>Contact</Links></Link></Fade>
-                </Pages>
-                <Pages>
-                    <Fade right><Link to="/blog"><Links link>Blog</Links></Link></Fade>
                 </Pages>
                 <Pages>
                     <Fade right><Link to="/about"><Links link>About</Links></Link></Fade>

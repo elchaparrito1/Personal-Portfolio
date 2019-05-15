@@ -82,7 +82,7 @@ class EmailMe extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{margin: "10px"}}>
                 <EmailModal 
                     handleModal={this.handleModal} 
                     isOpen={this.state.isOpen}
@@ -90,7 +90,7 @@ class EmailMe extends React.Component {
                     sendEmail={this.sendEmail}
                     sent={this.state.sent}
                 />
-                    <Column lg="4" md="4" sm="12" xs="12">
+                    
                         <Box onClick={this.handleModal}>
                             <Row>
                                 <Column lg="12" md="12" sm="12" xs="12">
@@ -107,7 +107,7 @@ class EmailMe extends React.Component {
                                 </Column>
                             </Row>
                         </Box>
-                    </Column> 
+                    
             </div>
         )
     }

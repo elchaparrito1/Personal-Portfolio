@@ -10,7 +10,7 @@ import {
 
 const CallMe = () => {
     return (
-        <Column lg="4" md="4" sm="12" xs="12">
+        <div style={{margin: "10px"}}>
             <Box>
                 <Row>
                     <Column lg="12" md="12" sm="12" xs="12">
@@ -28,7 +28,7 @@ const CallMe = () => {
                     </Column>
                 </Row>
             </Box>
-        </Column>
+        </div>
     )
 };
 

@@ -156,11 +156,13 @@ class MessageMe extends React.Component {
             userId,
             isLoading
           } = this.state;
-  
+          
+          // console.log(isDialogOpen, this.context);
           return (
-            <div>
+            
+            <div style={{margin: "10px"}}>
                 <div>
-                <Column lg="4" md="4" sm="12" xs="12">
+                
                          <Box onClick={this.showDialog}>
                              <Row>
                                  <Column lg="12" md="12" sm="12" xs="12">
@@ -177,9 +179,10 @@ class MessageMe extends React.Component {
                                  </Column>
                              </Row>
                          </Box>
-                     </Column> 
+                     
              </div>
               {currentRoom ? (
+                
                 <ChatWidget
                   handleBox={this.handleBox}
                   newMessage={newMessage}
@@ -188,6 +191,7 @@ class MessageMe extends React.Component {
                   currentUser={currentUser}
                   messages={messages}
                 />
+                
               ) : 
                 null
               }
@@ -203,6 +207,7 @@ class MessageMe extends React.Component {
                 />
               ) : null}
             </div>
+
           );
         }
 };

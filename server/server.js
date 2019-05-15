@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
 const messageRoute = express.Router();
 const PORT = 3001;
@@ -25,16 +25,17 @@ app.use(express.static("public"));
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect("mongodb://127.0.0.1:27017/personal", { useNewUrlParser: true });
-const connection = mongoose.connection;
-connection.once("open", function() {
-    console.log("MongoDB database connection established successfully");
-});
+// mongoose.connect("mongodb://127.0.0.1:27017/personal", { useNewUrlParser: true });
+// const connection = mongoose.connection;
+// connection.once("open", function() {
+//     console.log("MongoDB database connection established successfully");
+// });
 
 // app.get("/*", (req, res) => {
 //     res.sendFile(path.join(__dirname, "/../client/build/index.html"));
 //   });
 
+//API for NodeMailer and sending an email.
 messageRoute.route("/sendMessage/contact").post(function(req, res) {
     const { email, name, message } = req.body;
 
@@ -74,8 +75,9 @@ messageRoute.route("/sendMessage/contact").post(function(req, res) {
         });
     }
 });
+////////////////////////////////////////////////////////
 
-//Added from Pusher
+//API from Pusher for instant chat functionality
 app.post('/users', (req, res) => {
     console.log("did this run?");
     const { userId } = req.body;
@@ -104,8 +106,11 @@ app.post('/authenticate', (req, res) => {
   });
   res.status(authData.status).send(authData.body);
 });
+/////////////////////////////////////////////////////////
 
-//////////////////////////////
+//API from Pusher for comment section functionality
+
+/////////////////////////////////////////////////////////
 
 //using router routes
 app.use("/api", messageRoute);

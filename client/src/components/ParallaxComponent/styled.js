@@ -95,9 +95,12 @@ export const Text = styled.p`
 `;
 
 export const Line = styled.hr`
-    border-bottom: 2px solid #003366;
-    height: 0px;
     width: 1px;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #003366;
+    padding: 0;
   
     -webkit-animation: increase 3s;
     -moz-animation:    increase 3s; 

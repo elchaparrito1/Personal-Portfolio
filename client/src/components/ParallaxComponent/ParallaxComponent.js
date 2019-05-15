@@ -1,7 +1,6 @@
 import React from "react";
 import Fade from 'react-reveal/Fade';
 import {
-    
     Header, 
     Text,
     Row,
@@ -21,6 +20,7 @@ const ParallaxComponent = (props) => {
         <div>
                 <Parallax
                 bgImage={props.img}
+                
                 bgImageAlt="main background"
                 strength={400}
                 >
