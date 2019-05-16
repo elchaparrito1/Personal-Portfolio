@@ -5,12 +5,12 @@ const cors = require("cors");
 // const mongoose = require('mongoose');
 
 const messageRoute = express.Router();
-const PORT = 3001;
+const PORT = 3100;
 let nodemailer = require("nodemailer");
 
 //Added from Pusher
-require('dotenv').config({ path: '.env' });
 const Chatkit = require('@pusher/chatkit-server');
+require("dotenv").config({ path: ".env" });
 
 const chatkit = new Chatkit.default({
     instanceLocator: process.env.CHATKIT_INSTANCE_LOCATOR,
