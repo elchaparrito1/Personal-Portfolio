@@ -125,7 +125,8 @@ export const ImgDiv = styled.div`
     }
 
     @media only screen and (min-width: 1025px) and (max-width: 1300px) {
-    
+        width: 95%;
+        height: 100%;
     }
 `;
 
@@ -151,6 +152,7 @@ export const Img = styled.img`
     }
 
     @media only screen and (min-width: 1025px) and (max-width: 1300px) {
-    
+        width: 95%;
+        height: 100%;
     }
 `;

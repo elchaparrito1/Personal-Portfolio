@@ -65,6 +65,13 @@ class EmailModal extends React.Component {
                             </ModalBody>
                         <ModalFooter>
 
+                    {sent === "sending" && (
+                        <Row>
+                        <Column lg="12" md="12" sm="12" xs="12">
+                            <P>Sending...</P>
+                        </Column>
+                    </Row>)}
+
                     {sent === "email sent" && (
                         <Row>
                         <Column lg="12" md="12" sm="12" xs="12">

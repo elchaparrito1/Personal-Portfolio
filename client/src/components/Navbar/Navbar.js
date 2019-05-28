@@ -23,7 +23,7 @@ class Navbar extends React.Component {
     }
 
     componentDidMount = () => {
-        console.log(window.location.href.split("/").pop());
+        // console.log(window.location.href.split("/").pop());
         this.updatePredicate();
         window.addEventListener("resize", this.updatePredicate);
       }

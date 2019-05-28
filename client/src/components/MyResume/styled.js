@@ -55,12 +55,12 @@ export const Container = styled.div`
         width: 100%;
     }
 
-    @media only screen and (min-width: 321px) and (max-width: 767px) {
+    @media only screen and (min-width: 321px) and (max-width: 766px) {
         padding: 5vh 0 5vh 0;
         width: 100%;
     }
 
-    @media only screen and (min-width: 767px) and (max-width: 1024px) {
+    @media only screen and (min-width: 767px) and (max-width: 1224px) {
         padding: 0 0 5vh 0;
         width: 100%;
     }
@@ -92,7 +92,7 @@ export const MyContainer = styled.div`
         transition: color 0.25s;
     }
 
-    @media only screen and (min-width: 321px) and (max-width: 767px) {
+    @media only screen and (min-width: 321px) and (max-width: 1224px) {
         height: 0;
         left: 0;
         margin: 0 auto;
@@ -106,22 +106,7 @@ export const MyContainer = styled.div`
         transition: color 0.25s;
     }
 
-    @media only screen and (min-width: 767px) and (max-width: 1023px) {
-        height: 0;
-        bottom: 500px;
-        left: 0;
-        margin: 0 auto;
-        position: relative;
-        top: 0;
-        width: 90%
-
-        -moz-box-shadow: 0 0 0px #ccc;
-        -webkit-box-shadow: 0 0 0px #ccc;
-        box-shadow: 0 0 0px #ccc;
-        transition: color 0.25s;
-    }
-
-    @media only screen and (min-width: 1024px) and (max-width: 1300px) {
+    @media only screen and (min-width: 1225px) and (max-width: 1530px) {
         left: 0px;
         -moz-box-shadow: 0 0 0px #ccc;
         -webkit-box-shadow: 0 0 0px #ccc;
@@ -161,13 +146,13 @@ export const Icon = styled.img`
         
     }
 
-    @media only screen and (min-width: 321px) and (max-width: 767px) {
+    @media only screen and (min-width: 321px) and (max-width: 766px) {
         height: 25px;
         width: 25px;
         
     }
 
-    @media only screen and (min-width: 767px) and (max-width: 1024px) {
+    @media only screen and (min-width: 767px) and (max-width: 1224px) {
         height: 30px;
         width: 30px;
     }
@@ -188,11 +173,11 @@ export const A = styled.a`
         font-size: 1.1em;
     }
 
-    @media only screen and (min-width: 321px) and (max-width: 767px) {
+    @media only screen and (min-width: 321px) and (max-width: 766px) {
         font-size: 1.2em;
     }
 
-    @media only screen and (min-width: 767px) and (max-width: 1024px) {
+    @media only screen and (min-width: 767px) and (max-width: 1224px) {
         font-size: 1.4em;
     }
 `;
@@ -212,14 +197,14 @@ export const Li = styled.li`
         text-align: center;
     }
 
-    @media only screen and (min-width: 321px) and (max-width: 767px) {
+    @media only screen and (min-width: 321px) and (max-width: 766px) {
         font-size: 1em;
         margin: 0 auto;
         width: 70%;
         text-align: center;
     }
 
-    @media only screen and (min-width: 767px) and (max-width: 1024px) {
+    @media only screen and (min-width: 767px) and (max-width: 1224px) {
         font-size: 1.2em;
         margin: 0 auto;
         margin-bottom: 5px;
@@ -232,11 +217,15 @@ export const Th = styled.th`
     font-family: "Lato", Helvetica, sans-serif;
     margin: 2px;
 
-    @media only screen and (min-width: 767px) and (max-width: 1023px) {
+    @media only screen and (min-width: 767px) and (max-width: 992px) {
         font-size: 1.3em;
     }
 
-    @media only screen and (min-width: 1024px) {
+    @media only screen and (min-width: 993px) and (max-width: 1224px) {
+        font-size: 0.9em;
+    }
+
+    @media only screen and (min-width: 1225px) {
         font-size: 1.2em;
     }
 `;
@@ -251,37 +240,20 @@ export const Text = styled.h1`
     margin-top: ${props => props.header ? "50px" : "60px"};
 `;
 
-// export const BoxText = styled(Text)`
-//     font-family: "Lato", Helvetica, sans-serif;
-//     font-size: 2em;
-
-//     @media only screen and (min-width: 320px) and (max-width: 767px) {
-//         font-size: 1.5em;
-//     }
-
-//     @media only screen and (min-width: 767px) and (max-width: 1024px) {
-//         font-size: 1.7em;
-//     }
-
-//     @media only screen and (min-width: 1024px) and (max-width: 1400px) {
-//         font-size: 6em;
-//     }
-// `;
-
 export const TextHeader = styled(Text)`
     font-size: 2em;
 
-    @media only screen and (min-width: 320px) and (max-width: 767px) {
+    @media only screen and (min-width: 320px) and (max-width: 766px) {
         font-size: 1.5em;
         margin-top: 0px;
     }
 
-    @media only screen and (min-width: 767px) and (max-width: 1023px) {
+    @media only screen and (min-width: 767px) and (max-width: 1224px) {
         font-size: 1.7;
         margin-top: 30px;
     }
 
-    @media only screen and (min-width: 1024px) and (max-width: 1400px) {
+    @media only screen and (min-width: 1225px) and (max-width: 1400px) {
         font-size: 1.8em;
         margin-top: 30px;
     }
@@ -296,7 +268,7 @@ export const P = styled.p`
     margin-left: ${props => props.indent ? "30px" : ""};
     
 
-    @media only screen and (min-width: 320px) and (max-width: 767px) {
+    @media only screen and (min-width: 320px) and (max-width: 766px) {
         font-size: ${props => props.heading ? "1.1em" : "1em"};
         width: 90%;
         text-align: "left";
@@ -304,14 +276,14 @@ export const P = styled.p`
         
     }
 
-    @media only screen and (min-width: 767px) and (max-width: 1023px) {
+    @media only screen and (min-width: 767px) and (max-width: 1224px) {
         font-size: ${props => props.heading ? "1.3em" : "1.2em"};
         width: 90%;
         text-align: "left";
         margin: 0 auto;
     }
 
-    @media only screen and (min-width: 1024px) and (max-width: 1400px) {
+    @media only screen and (min-width: 1225px) and (max-width: 1400px) {
         font-size: ${props => props.heading ? "1.5em" : "1.3em"};
         width: 90%;
         text-align: "left";

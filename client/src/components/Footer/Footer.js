@@ -60,12 +60,14 @@ class Footer extends React.Component {
         const { email } = this.state;
         // eslint-disable-next-line
         const regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        console.log(regex.test(email));
         return regex.test(email);
     };
 
     sendEmail = (event) => {
         event.preventDefault();
+        this.setState({
+            sent: "sending"
+        });
         const emailObj = {
             name: this.state.name,
             email: this.state.email,
@@ -78,11 +80,12 @@ class Footer extends React.Component {
         } else {
             API.sendMessage(emailObj)
               .then(response => {
-                  console.log(response.data);
+                //   console.log(response.data);
                   if (response.data === "email sent") {
                       this.setState({
                           sent: "email sent"
                       });
+                      setTimeout(this.handleModal, 3000);
                   } else if (response.data === "missing information") {
                       this.setState({
                           sent: "missing information"

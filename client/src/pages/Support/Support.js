@@ -1,68 +1,111 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Chatkit from "@pusher/chatkit-client";
+import LoginModal from "../../components/Modals/LoginModal";
+import API from "../../utils/API";
 import "./Support.css";
 
-    class Support extends Component {
+  class Support extends Component {
 
-        state = {
-          currentUser: null,
-          currentRoom: null,
-          newMessage: "",
-          messages: [],
-          rooms: []
-        };
+      state = {
+        currentUser: null,
+        currentRoom: null,
+        newMessage: "",
+        messages: [],
+        rooms: [],
+        password: "",
+        isOpen: true,
+        login: ""
+      };
 
-        handleInput = (event) => {
-            const { value, name } = event.target;
+      handleModal = () => {
+        if(!this.state.isOpen) {
             this.setState({
-              [name]: value
+                isOpen: true
             });
-          }
-          
-        sendMessage = (event) => {
-            event.preventDefault();
-            const { newMessage, currentUser, currentRoom } = this.state;
-        
-            if (newMessage.trim() === "") return;
-        
-            currentUser.sendMessage({
-              text: newMessage,
-              roomId: `${currentRoom.id}`
-            });
-        
-            this.setState({
-              newMessage: ""
-            });
-          }
-          
-        connectToRoom = (id) => {
-            const { currentUser } = this.state;
-            return currentUser
-              .subscribeToRoom({
-                roomId: `${id}`,
-                messageLimit: 100,
-                hooks: {
-                  onMessage: message => {
-                    this.setState({
-                      messages: [...this.state.messages, message]
-                    });
-                  },
-                }
+       } else if (this.state.isOpen) {
+           this.setState({
+                isOpen: false
+           });
+       }
+      };
+
+      handleInput = (event) => {
+        const { value, name } = event.target;
+        this.setState({
+          [name]: value
+        });
+      }
+
+      handleChange = (name) => (event) => {
+        this.setState({
+            [name]: event.target.value
+        });
+      };
+
+      handlelogin = (event) => {
+        event.preventDefault();
+        const password = {
+          password: this.state.password
+        }
+        API.checkPassword(password)
+          .then(response => {
+            if (response.data === "incorrect password") {
+              this.setState({
+                password: "",
+                login: "incorrect password"
               })
-              .then(currentRoom => {
-                this.setState({
-                  currentRoom
-                });
+            } else if (response.data === "correct password") {
+              this.setState({
+                isOpen: false
               });
-          }
+            }
+          })
+      };
+          
+      sendMessage = (event) => {
+          event.preventDefault();
+          const { newMessage, currentUser, currentRoom } = this.state;
+      
+          if (newMessage.trim() === "") return;
+      
+          currentUser.sendMessage({
+            text: newMessage,
+            roomId: `${currentRoom.id}`
+          });
+      
+          this.setState({
+            newMessage: ""
+          });
+      }
+          
+      connectToRoom = (id) => {
+          const { currentUser } = this.state;
+          return currentUser
+            .subscribeToRoom({
+              roomId: `${id}`,
+              messageLimit: 100,
+              hooks: {
+                onMessage: message => {
+                  this.setState({
+                    messages: [...this.state.messages, message]
+                  });
+                },
+              }
+            })
+            .then(currentRoom => {
+              this.setState({
+                currentRoom
+              });
+            });
+      }
 
 
       componentDidMount() {
         const userId = "support";
 
         axios
-          .post("http://localhost:3000/users", { userId })
+          .post("/users", { userId })
           .then(() => {
             const tokenProvider = new Chatkit.TokenProvider({
               url: "http://localhost:3000/authenticate"
@@ -142,6 +185,14 @@ import "./Support.css";
 
         return (
           <div className="support-area">
+            <LoginModal 
+                    handleModal={this.handleModal} 
+                    isOpen={this.state.isOpen}
+                    handleChange={this.handleChange}
+                    handlelogin={this.handlelogin}
+                    password={this.state.password}
+                    login={this.state.login}
+            />
             <aside className="support-sidebar">
               <h3>Rooms</h3>
               <ul>{RoomList}</ul>
@@ -160,6 +211,7 @@ import "./Support.css";
                   value={newMessage}
                   name="newMessage"
                 />
+                <button onSubmit={this.sendMessage}>Submit</button>
               </form>
             </section>
           </div>

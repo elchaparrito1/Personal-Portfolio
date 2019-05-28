@@ -50,6 +50,9 @@ class EmailMe extends React.Component {
 
     sendEmail = (event) => {
         event.preventDefault();
+        this.setState({
+            sent: "sending"
+        });
         const emailObj = {
             name: this.state.name,
             email: this.state.email,
@@ -62,11 +65,12 @@ class EmailMe extends React.Component {
         } else {
             API.sendMessage(emailObj)
               .then(response => {
-                  console.log(response.data);
+                //   console.log(response.data);
                   if (response.data === "email sent") {
                       this.setState({
                           sent: "email sent"
                       });
+                      setTimeout(this.handleModal, 3000);
                   } else if (response.data === "missing information") {
                       this.setState({
                           sent: "missing information"

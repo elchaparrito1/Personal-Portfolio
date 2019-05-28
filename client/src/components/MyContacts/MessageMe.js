@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import API from "../../utils/API";
 import Chatkit from "@pusher/chatkit-client";
 import Spinner from "react-spinkit";
 import ChatWidget from "../../components/ChatWidget/ChatWidget";
@@ -119,8 +119,7 @@ class MessageMe extends React.Component {
           if (userId === null || userId.trim() === "") {
             alert("Invalid userId");
           } else {
-            axios
-              .post("http://localhost:3000/users", { userId })
+            API.sendChat(userId)
               .then(() => {
                 const tokenProvider = new Chatkit.TokenProvider({
                   url: "http://localhost:3000/authenticate"

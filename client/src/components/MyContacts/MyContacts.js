@@ -54,7 +54,7 @@ class MyContacts extends React.Component {
             userId: "",
             isDialogOpen: false
         });
-        console.log("Ran?", this.state.isChatOpen);
+        // console.log("Ran?", this.state.isChatOpen);
         this.props.callbackFromParent(false);
       };
 

@@ -55,12 +55,12 @@ export const Text = styled.h1`
     font-family: "Lato", Helvetica, sans-serif;
     font-size: ${props => props.copyright ? "1em" : "2em"}
 
-    @media only screen and (min-width: 320px) and (max-width: 1024px) {
+    @media only screen and (min-width: 320px) and (max-width: 766px) {
         font-size: ${props => props.copyright ? "1em" : "1.8em"};
     }
 
     @media only screen and (min-width: 767px) and (max-width: 1024px) {
-        font-size: ${props => props.copyright ? "1.5em" : "2em"};
+        font-size: ${props => props.copyright ? "1em" : "2em"};
     }
 `;
 
@@ -83,16 +83,16 @@ export const Links =  styled(Link)`
         margin-left: 5px
     }
 
-    @media only screen and (min-width: 321px) and (max-width: 767px) {
+    @media only screen and (min-width: 321px) and (max-width: 766px) {
         font-size: 1.3em;
         margin: 0 auto;
         margin-left: 5px
     }
 
     @media only screen and (min-width: 767px) and (max-width: 1024px) {
-        font-size: 2em;
+        font-size: 1.4em;
         margin: 0 auto;
-        margin-left: 25px;
+        margin-left: 5px;
     }
 
     
@@ -112,15 +112,15 @@ export const Icon = styled.img`
         margin-left: ${props => props.connect ? "0" : "20px"};
     }
 
-    @media only screen and (min-width: 321px) and (max-width: 767px) {
+    @media only screen and (min-width: 321px) and (max-width: 766px) {
         height: 25px;
         width: 25px;
         margin-left: ${props => props.connect ? "0" : "30px"};
     }
 
     @media only screen and (min-width: 767px) and (max-width: 1024px) {
-        height: 35px;
-        width: 35px;
+        height: 30px;
+        width: 30px;
         margin-left: ${props => props.connect ? "0" : "35px"};
     }
    
@@ -137,7 +137,7 @@ export const Table = styled.table`
         width: ${props => props.linkers ? "30%" : "25%"};
     }
 
-    @media only screen and (min-width: 321px) and (max-width: 767px) {
+    @media only screen and (min-width: 321px) and (max-width: 766px) {
         margin: 0 auto;
         table-layout: auto;   
         width: ${props => props.linkers ? "30%" : "25%"};

@@ -2,67 +2,60 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-// const mongoose = require('mongoose');
-
 const messageRoute = express.Router();
-const PORT = 3100;
-let nodemailer = require("nodemailer");
+const path = require("path");
 
-//Added from Pusher
-const Chatkit = require('@pusher/chatkit-server');
 require("dotenv").config({ path: ".env" });
-
+const PORT = process.env.PORT || 3001;
+let nodemailer = require("nodemailer");
+//Added from Pusher
+const Chatkit = require("@pusher/chatkit-server");
 const chatkit = new Chatkit.default({
     instanceLocator: process.env.CHATKIT_INSTANCE_LOCATOR,
     key: process.env.CHATKIT_SECRET_KEY,
-  });
+});
 ///////////////////  
+const Nexmo = require("nexmo");
+const nexmo = new Nexmo({
+    apiKey: process.env.NEXMO_API_KEY,
+    apiSecret: process.env.NEXMO_API_SECRET
+});
 
 
-// // Make public a static folder
+//Make public a static folder
 app.use(express.static("public"));
 
 app.use(cors());
 app.use(bodyParser.json());
 
-// mongoose.connect("mongodb://127.0.0.1:27017/personal", { useNewUrlParser: true });
-// const connection = mongoose.connection;
-// connection.once("open", function() {
-//     console.log("MongoDB database connection established successfully");
-// });
-
-// app.get("/*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "/../client/build/index.html"));
-//   });
+//Serve the static files from the React app
+app.use(express.static(path.join(__dirname, "client/build")));
 
 //API for NodeMailer and sending an email.
-messageRoute.route("/sendMessage/contact").post(function(req, res) {
+messageRoute.route("/contact/send-message").post(function(req, res) {
     const { email, name, message } = req.body;
-
+    
     if (name === "" || email === "" || message === "") {
-            res.json("missing information");
+        res.json("missing information");
     } else {
-
-        console.log("Info", process.env.EMAIL_ADDRESS, process.env.EMAIL_PASSWORD);
-        let ADDRESS = process.env.EMAIL_ADDRESS
-        let PASSWORD = process.env.EMAIL_PASSWORD
         
-        console.log("email address", ADDRESS, PASSWORD);
-        
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
+        let transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure: false,
+            requireTLS: true,
             auth: {
-                user: ADDRESS,
-                pass: PASSWORD
+                user: process.env.EMAIL,
+                pass: process.env.PASSWORD
             }
         });
         
-        const mailOptions = {
-            from: `${email}`,
-            replyTo: `${email}`,
-            to: ADDRESS,
-            subject: `Message from ${name}`,
-            text: `Hello,\n\n${message}`
+        let mailOptions = {
+            from: email,
+            replyTo: email,
+            to: process.env.EMAIL,
+            subject: "New Message - Personal Site",
+            text: message
         };
         
         transporter.sendMail(mailOptions, function(err, response) {
@@ -78,42 +71,68 @@ messageRoute.route("/sendMessage/contact").post(function(req, res) {
 ////////////////////////////////////////////////////////
 
 //API from Pusher for instant chat functionality
-app.post('/users', (req, res) => {
-    console.log("did this run?");
+app.post("/users", (req, res) => {
     const { userId } = req.body;
-
+    const from = process.env.FROM_NUMBER;
+    const to = process.env.TO_NUMBER;
+    const text = `Hey! ${userId} is trying to chat with you!`;
+    
     chatkit
     .createUser({
-      id: userId,
-      name: userId,
+        id: userId,
+        name: userId,
     })
     .then(() => {
-      res.sendStatus(201);
+        res.sendStatus(201);
     })
     .catch(err => {
-      if (err.error === 'services/chatkit/user_already_exists') {
-        console.log(`User already exists: ${userId}`);
-        res.sendStatus(200);
-      } else {
-        res.status(err.status).json(err);
-      }
+        if (err.error === "services/chatkit/user_already_exists") {
+            console.log(`User already exists: ${userId}`);
+            res.sendStatus(200);
+        } else {
+            res.status(err.status).json(err);
+        }
     });
+    
+    if (userId !== "support") {
+        nexmo.message.sendSms(from, to, text, (err, responseData) => {
+            if (err) {
+                console.log(err);
+            } else {
+                if(responseData.messages[0]['status'] === "0") {
+                    console.log("Message sent successfully.");
+                } else {
+                    console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
+                }
+            }
+        });
+    };
 });
 
-app.post('/authenticate', (req, res) => {
-  const authData = chatkit.authenticate({
-    userId: req.query.user_id,
-  });
-  res.status(authData.status).send(authData.body);
+app.post("/support", (req, res) => {
+    const password = req.body.password;
+    if (password === process.env.SUPPORT_PASSWORD) {
+        res.json("correct password")
+    } else {
+        res.json("incorrect password")
+    }
 });
-/////////////////////////////////////////////////////////
 
-//API from Pusher for comment section functionality
-
-/////////////////////////////////////////////////////////
+app.post("/authenticate", (req, res) => {
+    const authData = chatkit.authenticate({
+        userId: req.query.user_id,
+    });
+    res.status(authData.status).send(authData.body);
+});
 
 //using router routes
 app.use("/api", messageRoute);
+
+// Handles any requests that don't match the ones above
+app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "/../client/build/index.html"));
+});
+  
 
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);

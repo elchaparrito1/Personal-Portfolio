@@ -123,9 +123,14 @@ export const ImgDiv = styled.div`
         height: 220px;
     }
 
-    @media only screen and (min-width: 1025px) and (max-width: 1300px) {
+    @media only screen and (min-width: 1025px) and (max-width: 1370px) {
         width: 350px;
         height: 250px;
+    }
+
+    @media only screen and (min-width: 1371px) and (max-width: 1515px) {
+        width: 450px;
+        height: 300px;
     }
 `;
 
@@ -150,8 +155,13 @@ export const Img = styled.img`
         height: 220px;
     }
 
-    @media only screen and (min-width: 1025px) and (max-width: 1300px) {
+    @media only screen and (min-width: 1025px) and (max-width: 1370px) {
         width: 350px;
         height: 250px;
+    }
+
+    @media only screen and (min-width: 1371px) and (max-width: 1515px) {
+        width: 450px;
+        height: 300px;
     }
 `;

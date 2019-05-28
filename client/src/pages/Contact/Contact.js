@@ -23,7 +23,7 @@ class Contact extends React.Component {
         this.setState({
             isChatOpen: dataFromChild
         });
-        console.log(this.state.isChatOpen)
+        // console.log(this.state.isChatOpen)
     }
 
     render() {
