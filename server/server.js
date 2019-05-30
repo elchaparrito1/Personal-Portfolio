@@ -28,8 +28,21 @@ app.use(express.static("public"));
 app.use(cors());
 app.use(bodyParser.json());
 
-//Serve the static files from the React app
-app.use(express.static(path.join(__dirname, "client/build")));
+//Static file declaration
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+//production mode
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  //
+  app.get('*', (req, res) => {
+    res.sendfile(path.join(__dirname = 'client/build/index.html'));
+  })
+}
+//build mode
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/public/index.html'));
+})
 
 //API for NodeMailer and sending an email.
 messageRoute.route("/contact/send-message").post(function(req, res) {
@@ -128,10 +141,6 @@ app.post("/authenticate", (req, res) => {
 //using router routes
 app.use("/api", messageRoute);
 
-// Handles any requests that don't match the ones above
-app.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname, "/../client/build/index.html"));
-});
   
 
 app.listen(PORT, function() {
