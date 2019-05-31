@@ -108,7 +108,7 @@ import "./Support.css";
           .post("/users", { userId })
           .then(() => {
             const tokenProvider = new Chatkit.TokenProvider({
-              url: "http://localhost:3000/authenticate"
+              url: "http://serene-peak-12902.herokuapp.com/authenticate"
             });
 
             const chatManager = new Chatkit.ChatManager({
