@@ -7,7 +7,7 @@ export const Row = styled.div`
         clear: both;
         display: table;
     }
-    background-color: ${props => props.copyright ? "rgba(#bfbfbf, 0.5)" : "#bfbfbf"}
+    background-color: ${props => props.copyright ? "rgba(#bfbfbf, 0.5)" : "#bfbfbf"};
     margin: 0 0 15px 0;
     
 `;
@@ -53,7 +53,7 @@ export const Foot = styled.div`
 export const Text = styled.h1`
     color: #1a1a1a;
     font-family: "Lato", Helvetica, sans-serif;
-    font-size: ${props => props.copyright ? "1em" : "2em"}
+    font-size: ${props => props.copyright ? "1em" : "2em"};
 
     @media only screen and (min-width: 320px) and (max-width: 766px) {
         font-size: ${props => props.copyright ? "1em" : "1.8em"};
@@ -68,7 +68,7 @@ export const Text = styled.h1`
 //Styling has been removed and seems okay, but bear in mind you might need to add it back in.
 //You also had to do this in Navbar and Parallax components. A solution could be to extend styles to new style component.
 export const Links =  styled(Link)`
-    color: #003366
+    color: #003366;
     font-family: "Lato", Helvetica, sans-serif;
     font-size: 1.4em;
 

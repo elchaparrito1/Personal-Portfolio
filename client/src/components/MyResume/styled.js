@@ -5,8 +5,8 @@ export const Row = styled.div`
         content: "";
         clear: both;
         display: table;
-    }
-    margin-bottom: ${props => props.break ? "100px" : ""}
+    };
+    margin-bottom: ${props => props.break ? "100px" : ""};
 
     @media only screen and (min-width: 320px) and (max-width: 767px) {
         margin-top: 0px;
@@ -84,13 +84,13 @@ export const MyContainer = styled.div`
         margin: 0 auto;
         position: relative;
         top: 0;
-        width: 90%
+        width: 90%;
 
         -moz-box-shadow: 0 0 0px #ccc;
         -webkit-box-shadow: 0 0 0px #ccc;
         box-shadow: 0 0 0px #ccc;
         transition: color 0.25s;
-    }
+    };
 
     @media only screen and (min-width: 321px) and (max-width: 1224px) {
         height: 0;
@@ -98,7 +98,7 @@ export const MyContainer = styled.div`
         margin: 0 auto;
         position: relative;
         top: 0;
-        width: 90%
+        width: 90%;
 
         -moz-box-shadow: 0 0 0px #ccc;
         -webkit-box-shadow: 0 0 0px #ccc;
